@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/AkayaTelivigala-Regular.ttf",
+      "sha1": "9af7bd7f45f889ed626936c12600b2cba2e21397"
+    },
+    {
+      "path": "assets/fonts/Encode-Sans.ttf",
+      "sha1": "b529013612d78c4c0bc96238fe38790efa2aa79c"
+    }
+  ]
+}
