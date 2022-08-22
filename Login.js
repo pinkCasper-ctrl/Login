@@ -4,6 +4,7 @@ import RadioGroup from 'react-native-radio-buttons-group'
 // import RadioForm,{RadioButton,RadioButtonInput,RadioButtonLabel} from 'react-native-simple-radio-button';
 import { RadioButton } from 'react-native-paper';
 import ProfileUpdateContentInfo from './ProfileUpdateContentInfo';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 //// 13-14-15-16. GÜNLER 
 const width = Dimensions.get('window').width; //dimensions, ekran boyutunu almaya yarar.
@@ -59,12 +60,11 @@ export default class Login extends Component{
             <Text style={styles.inputText}>   ****************</Text>
       </TextInput>
 
-      <Button
+      <Pressable
         style={styles.button}
-        title="Navigate"
         onPress={() => this.props.navigation.navigate('Register')}>
         <Text style={styles.buttonText}>Giriş Yap</Text>
-      </Button>
+      </Pressable>
 
       <Text style={styles.forgotPassword}>Şifreni mi unuttun?</Text>
 
@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
     
   },
   binText: {
+    height:70,
     fontFamily:'AkayaTelivigala-Regular',
     fontSize: 60,
     fontWeight: '400',
@@ -93,6 +94,7 @@ const styles = StyleSheet.create({
     color: '#3F3D56',
   },
   inText: {
+    height:70,
     fontFamily:'AkayaTelivigala-Regular',
     fontSize: 60,
     fontWeight: '400',

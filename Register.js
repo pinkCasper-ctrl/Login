@@ -1,5 +1,5 @@
 import { View, Text, TextInput, StyleSheet, Dimensions, Alert, Pressable, Image, ImageBackground } from 'react-native'
-import React, { useState } from 'react'
+import React, { Component, useState } from 'react'
 import RadioGroup from 'react-native-radio-buttons-group'
 // import RadioForm,{RadioButton,RadioButtonInput,RadioButtonLabel} from 'react-native-simple-radio-button';
 import { RadioButton } from 'react-native-paper';
@@ -7,7 +7,6 @@ import ProfileUpdateContentInfo from './ProfileUpdateContentInfo';
 
 const width = Dimensions.get('window').width; //dimensions, ekran boyutunu almaya yarar.
 const height = Dimensions.get('window').height;
-
 ////17-18-19.Gün (Register)
 const radioButtonsData = [
   {
@@ -26,12 +25,24 @@ const radioButtonsData = [
     value: 'Belirtmek İstemiyorum',
   }
 ];
-export default function App(){
-  const [radioButtons, setRadioButtons] = useState(radioButtonsData);
-  function onPressRadioButton(radioButtonsArray){
-    setRadioButtons(radioButtonsArray);
+ function controlChecked(){
+  const [checked, setChecked] = useState('first');
+}
+// function onPressRadioButton(radioButtonsArray){
+  // setRadioButtons(radioButtonsArray);}
+export default class Register extends Component{
+ 
+  constructor(props) {
+    super(props);
+    this.state = {
+      checked: 'Erkek',
+      agreement : 'true'
+    };
   }
-  const [checked, setChecked] = React.useState('first');
+  render(){
+
+  //const [radioButtons, setRadioButtons] = useState(radioButtonsData);
+  console.log("geldi mi")
 
   return(
     <View>
@@ -48,7 +59,7 @@ export default function App(){
     
            <Text style={styles.nameSurnameText}>İsim soyisim</Text>
            <TextInput style={styles.nameSurname}>
-              <ProfileUpdateContentInfo/>
+              {/* <ProfileUpdateContentInfo/> */}
               {/* <Image color={'#656F77'} source={require('./Message.png')}></Image> */}
               <Text style={styles.inputText}>   Turgut Kurt</Text>
            </TextInput>
@@ -65,29 +76,30 @@ export default function App(){
             <Text style={styles.inputText}>   18 Ocak 1993</Text>
           </TextInput>
 
+
         <Text style={styles.radioButtonText}>Cinsiyetiniz</Text>
         <View style={{position:'absolute',top:height/100*54,left: width/100*6.33, flexDirection:'row'}}>
            <RadioButton 
               color='#3F3D56'
               value='first'
-              status={checked ==='first'? 'checked' : 'unchecked'}
-              onPress={()=>Alert.alert('Butona Tıklandı')}
+              status={this.state.checked ==='Erkek'? 'checked' : 'unchecked'}
+              onPress={() => this.setState({checked:'Erkek'})}
            ></RadioButton>
            <Text style={{marginTop:10,fontSize:12,fontWeight:'300',color:'#596475'}}>Erkek    </Text>
         
            <RadioButton 
               color='#3F3D56'
               value='second'
-              status={checked ==='second'? 'checked' : 'unchecked'}
-              onPress={()=>Alert.alert('Butona Tıklandı')}
+              status={this.state.checked ==='kadın'? 'checked' : 'unchecked'}
+              onPress={() => this.setState({checked:'kadın'})}
            ></RadioButton>
            <Text style={{marginTop:10,fontSize:12,fontWeight:'300',color:'#596475'}}>Kadın    </Text>
         
            <RadioButton 
               color='#3F3D56'
               value='third'
-              status={checked ==='third'? 'checked' : 'unchecked'}
-              onPress={()=>Alert.alert('Butona Tıklandı')}
+              status={this.state.checked ==='belirtmek istemiyorum'? 'checked' : 'unchecked'}
+              onPress={() => this.setState({checked:'belirtmek istemiyorum'})}
            ></RadioButton>
            <Text style={{marginTop:10,fontSize:12,fontWeight:'300',color:'#596475'}}>Belirtmek istemiyorum</Text>
         
@@ -149,15 +161,15 @@ export default function App(){
            <RadioButton 
               color='#3F3D56'
               value='first'
-              status={checked ==='first'? 'checked' : 'unchecked'}
-              onPress={()=>Alert.alert('Butona Tıklandı')}
+              status={this.state.agreement === 'true'? 'checked' : 'unchecked'}
+              onPress={()=> this.state.agreement ==='true'? this.setState({agreement:'false'}) :  this.setState({agreement:'true'}) }
            ></RadioButton>
            <Text style={{marginTop:10,fontSize:12,fontWeight:'300',color:'#596475'}}>Gizlilik sözleşmesini okudum, onaylıyorum</Text>
         </View>
         
            <Pressable
             style={styles.button}
-            onPress={() => Alert.alert('Butona Tıklandı')}>
+            onPress={() => this.state.agreement === 'false'? Alert.alert('Lütfen gizlilik sözleşmesini onaylayınız.') : Alert.alert('Kayıt tamam') }>
             <Text style={styles.buttonText}>Üye Ol</Text>
           </Pressable>
     
@@ -169,6 +181,7 @@ export default function App(){
       
     
   )
+    }
 }
 
 const styles= StyleSheet.create({
