@@ -2,7 +2,7 @@ import { View, Text, TextInput, StyleSheet, Dimensions, Alert, Pressable, Image,
 import React, { useState, Component } from 'react'
 import RadioGroup from 'react-native-radio-buttons-group'
 // import RadioForm,{RadioButton,RadioButtonInput,RadioButtonLabel} from 'react-native-simple-radio-button';
-import { RadioButton } from 'react-native-paper';
+import { RadioButton, ThemeProvider } from 'react-native-paper';
 import ProfileUpdateContentInfo from './ProfileUpdateContentInfo';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import FlashMessage, {showMessage, hideMessage} from 'react-native-flash-message';
@@ -16,7 +16,9 @@ const width = Dimensions.get('window').width; //dimensions, ekran boyutunu almay
 const height = Dimensions.get('window').height;
 
 
-
+// function undiefinedPassword() {
+  
+// }
 const validationSchema = Yup.object().shape({
   email: Yup.string()
   .email('Lütfen geçerli bir e-posta girin.')
@@ -35,7 +37,28 @@ const validationSchema = Yup.object().shape({
 export default class Login extends Component{
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+          showTheEmail:false,
+          showThePassword:false
+        };
+        this.handleClick = this.handleClick.bind(this);
+        this.handleErrorControl = this.handleErrorControl.bind(this);
+
+      }
+      handleClick(errors) {
+        var allError="Email ve şifre alanı boş bırakılamaz";
+        console.log(errors.email);
+        console.log(errors.password);
+        if (errors.email != undefined || errors.password != undefined) {
+          allError= errors.email +" "+ errors.password;
+        }
+        return allError;
+      }
+      handleErrorControl(errors){
+        if(errors.email || errors.password){
+          this.setState({showTheEmail:true})
+          this.setState({showThePassword:true})
+        }
       }
 //   const [PASS, setPASS] = useState('1234')
 //   const [MAIL, setMAIL] = useState('xyz@gmail.com')
@@ -74,7 +97,7 @@ export default class Login extends Component{
       </Pressable> */}
 
       <Formik
-        initialValues={{email: '', password: '' }}
+        initialValues={{email: '', password: '',pressable: false }}
         validationSchema={validationSchema}
         onSubmit={values => console.log(values)}>
         {({
@@ -93,9 +116,9 @@ export default class Login extends Component{
                 onChangeText={handleChange('email')}
                 onBlur={handleBlur('email')}
                 value={values.email}/>
-            {/* {touched.email && errors.email &&
+            { this.state.showTheEmail && errors.email &&
             <Text style={{color: 'red', position:'absolute', left: (width - 335) / 2 ,top: height / 100 * 13,}}>{errors.email}</Text>
-            } */}
+            }
 
             <Text style={styles.passwordText}>Şifreniz</Text>
             <TextInput  
@@ -106,14 +129,20 @@ export default class Login extends Component{
               value={values.password}
               secureTextEntry={true}
             />
-             {/* {touched.password && errors.password &&  //ilgili alandan ayrılşdıktan sonra hatayı gösterir. sen anlık olarak hatayı göstermesini istiyorsan touched kullanmazsın
-           <Text style={{color: 'red', position:'absolute', left: (width - 335) / 2 ,top: height / 100 * 25,}}>{errors.password}</Text>
-             } */}
+             {this.state.showThePassword  && errors.password &&  //ilgili alandan ayrılşdıktan sonra hatayı gösterir. sen anlık olarak hatayı göstermesini istiyorsan touched kullanmazsın
+                <Text style={{color: 'red', position:'absolute', left: (width - 335) / 2 ,top: height / 100 * 25,}}>{errors.password}</Text>
+                
+             }
 
             <Pressable
               style={styles.button}
               onPress = {() => {
-                showMessage({message:errors,type:"danger"});
+                //const error=this.handleClick(errors)
+                //values.pressable=true
+                //showMessage({message:error,type:"danger"});
+                this.handleErrorControl(errors)
+                
+                console.log('true')
               }}>
               <Text style={styles.buttonText}>Giriş Yap</Text>
             </Pressable>
