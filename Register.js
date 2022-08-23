@@ -1,6 +1,6 @@
 import { View, Text, TextInput, StyleSheet, Dimensions, Alert, Pressable, Image, ImageBackground } from 'react-native'
 import React, { Component, useState } from 'react'
-import RadioGroup from 'react-native-radio-buttons-group'
+// import RadioGroup from 'react-native-radio-buttons-group'
 // import RadioForm,{RadioButton,RadioButtonInput,RadioButtonLabel} from 'react-native-simple-radio-button';
 import { RadioButton } from 'react-native-paper';
 import ProfileUpdateContentInfo from './ProfileUpdateContentInfo';
