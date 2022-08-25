@@ -1,15 +1,14 @@
 // import {Text, TouchableOpacity, View} from 'react-native';
-import 'react-native-gesture-handler'
+
 import * as React from 'react';
+
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator} from '@react-navigation/stack';
+import Router from './src/navigation';
+
 // import { createBottomTabNavigator } from 'react-navigation-tabs';
 // import { createAppContainer, SafeAreaView } from 'react-navigation';
 // import { ScrollView } from 'react-native-gesture-handler';
- import Login from './Login'
- import Register from './Register'
-
- const Stack= createStackNavigator();
+  
 // const App = () =>{
 //   return (
 //     <View>
@@ -22,10 +21,7 @@ import { createStackNavigator} from '@react-navigation/stack';
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name=" " component={Login} />
-        <Stack.Screen name="Register" component={Register} />
-      </Stack.Navigator>
+      <Router />
     </NavigationContainer>
   );
 };

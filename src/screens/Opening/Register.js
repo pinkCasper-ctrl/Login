@@ -1,9 +1,13 @@
-import { View, Text, TextInput, StyleSheet, Dimensions, Alert, Pressable, Image, ImageBackground } from 'react-native'
+import { Alert, Dimensions, Image, ImageBackground, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { Component, useState } from 'react'
+
+import ProfileUpdateContentInfo from '../../../ProfileUpdateContentInfo';
+import { RadioButton } from 'react-native-paper';
+
 // import RadioGroup from 'react-native-radio-buttons-group'
 // import RadioForm,{RadioButton,RadioButtonInput,RadioButtonLabel} from 'react-native-simple-radio-button';
-import { RadioButton } from 'react-native-paper';
-import ProfileUpdateContentInfo from './ProfileUpdateContentInfo';
+
+
 
 const width = Dimensions.get('window').width; //dimensions, ekran boyutunu almaya yarar.
 const height = Dimensions.get('window').height;
@@ -30,7 +34,7 @@ const radioButtonsData = [
 }
 // function onPressRadioButton(radioButtonsArray){
   // setRadioButtons(radioButtonsArray);}
-export default class Register extends Component{
+ class Register extends Component{
  
   constructor(props) {
     super(props);
@@ -60,19 +64,16 @@ export default class Register extends Component{
            <Text style={styles.nameSurnameText}>İsim soyisim</Text>
            <TextInput style={styles.nameSurname}>
               {/* <ProfileUpdateContentInfo/> */}
-              {/* <Image color={'#656F77'} source={require('./Message.png')}></Image> */}
               <Text style={styles.inputText}>   Turgut Kurt</Text>
            </TextInput>
 
           <Text style={styles.mailText}>E-mail adresiniz</Text>
           <TextInput style={[styles.mailBox, {paddingLeft:15}]}>
-            <Image source={require('./Message.png')}></Image>
             <Text style={styles.inputText}>   turgut@softcand.com</Text>
           </TextInput>
 
           <Text style={styles.dateOfBirthText}>Doğum Tarihi</Text>
           <TextInput style={[styles.dateOfBirthBox,  {paddingLeft:15}]}>
-            <Image color={'#656F77'} source={require('./Message.png')}></Image>
             <Text style={styles.inputText}>   18 Ocak 1993</Text>
           </TextInput>
 
@@ -153,7 +154,6 @@ export default class Register extends Component{
 
            <Text style={styles.passwordText}>Şifreniz</Text>
            <TextInput style={[styles.passwordBox,  {paddingLeft:20}]}>
-           <Image color={'#656F77'} source={require('./Lock.png')}></Image>
            <Text style={styles.inputText}>   ****************</Text>
            </TextInput>
         
@@ -372,3 +372,5 @@ const styles= StyleSheet.create({
   },
 
 });
+
+export {Register} 
