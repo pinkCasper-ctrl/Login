@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 
+import { Colors } from '../../utils';
+import { ComponentInput } from '../../compenent';
 import FlashMessage from 'react-native-flash-message';
 import {Formik} from 'formik';
 import {LoginScreen} from '../../schema';
@@ -16,6 +18,7 @@ import { log } from 'react-native-reanimated';
 const width = Dimensions.get('window').width; //dimensions, ekran boyutunu almaya yarar.
 const height = Dimensions.get('window').height;
 
+
 const Login = props => {
   const [formikInitialValues, setFormikinitialValues] = useState({
     email: '',
@@ -23,11 +26,22 @@ const Login = props => {
   });
   const [showTheEmail, setShowTheEmail] = useState(false);
   const [showThePassword, setShowThePassword] = useState(false);
+  const [check, setCheck] = useState(true);
   const handleErrorControl = errors => {
     if (errors.email || errors.password) {
       setShowTheEmail(true);
       setShowThePassword(true);
     }
+  };
+  const errorCheck = errors =>{
+   if(!errors.password)
+   {
+      setCheck(false);
+   }
+   else{
+      setCheck(true);
+   }
+   return check;
   };
   const {
     BinIn,
@@ -67,7 +81,7 @@ const Login = props => {
         }}>
         {({handleChange, handleBlur, handleSubmit, values, errors}) => (
           <View>
-            <Text style={MailText}>E-mail adresiniz</Text>
+            {/* <Text style={MailText}>E-mail adresiniz</Text>
             <TextInput
               style={[MailBox, {paddingLeft: 15}]}
               placeholder=" turgut@softcand.com"
@@ -77,8 +91,64 @@ const Login = props => {
             />
             {showTheEmail && errors.email && (
               <Text style={CommonText}>{errors.email}</Text>
-            )}
-            <Text style={PasswordText}>Şifreniz</Text>
+            )} */}
+            <ComponentInput 
+              firstTextName="E-mail adresiniz"
+              textInputName="turgut@softcand.com"
+              secondTextName={errors.email}
+              textUp={{
+                  position:'absolute', 
+                  left: (width / 100) * 5.6,
+                  top: (height / 100) * 3.2,}}
+              textInput={{
+                marginTop: 5,
+                  position: 'absolute',
+                  left: (width - 335) / 2,
+                  right: (width - 335) / 2,
+                  top: (height / 100) * 5.67,}}
+              textDown={{
+                position: 'absolute',
+                left: (width - 335) / 2,
+                top: (height / 100) * 13,
+              }}
+              handleChange={handleChange('email')}
+              onBlur={handleBlur('email')}
+              value={values.email}
+              showTheEmail={showTheEmail}
+              inputErrors  = {errors.email}
+            >
+            </ComponentInput>
+            
+
+            <ComponentInput 
+              firstTextName="Şifreniz"
+              textInputName="****************"
+              secondTextName={errors.password}
+              textUp={{
+                  position:'absolute', 
+                  left: (width / 100) * 5.6,
+                  top: (height / 100) * 15,}}
+              textInput={{
+                marginTop: 5,
+                  position: 'absolute',
+                  left: (width - 335) / 2,
+                  right: (width - 335) / 2,
+                  top: (height / 100) * 18,}}
+              textDown={{
+                position: 'absolute',
+                left: (width - 335) / 2,
+                top: (height / 100) * 25,
+              }}
+              handleChange={handleChange('password')}
+              onBlur={handleBlur('password')}
+              value={values.password}
+              showTheEmail={showThePassword}
+              inputErrors  = {errors.password}
+              ste={true}
+            >
+            </ComponentInput>
+
+            {/* <Text style={PasswordText}>Şifreniz</Text>
             <TextInput
               style={[PasswordBox, {paddingLeft: 20}]}
               placeholder="**"
@@ -86,13 +156,18 @@ const Login = props => {
               onBlur={handleBlur('password')}
               value={values.password}
               secureTextEntry={true}
-            />
-            {showThePassword && errors.password && (
+            /> */}
+
+            {/* {showThePassword && errors.password && (
               <Text style={CommonText}>{errors.password}</Text>
-            )}
-            <TouchableOpacity style={Button} onPress={()=>console.log("asssas")}>
+            )} */}
+              
+            {!errors.password && !errors.email &&(
+            <TouchableOpacity style={Button} onPress={()=>console.log(errors.password)}>
               <Text style={ButtonText}>Giriş Yap</Text>
             </TouchableOpacity>
+            )}
+          
           </View>
         )}
       </Formik>
@@ -123,7 +198,7 @@ const styles = StyleSheet.create({
     fontFamily: 'AkayaTelivigala-Regular',
     fontSize: 60,
     fontWeight: '400',
-    color: '#3F3D56',
+    color: Colors.Blue,
   },
   InText: {
     height: 70,
@@ -133,7 +208,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
   InBackground: {
-    backgroundColor: '#3F3D56',
+    backgroundColor: Colors.NavyBlue,
   },
   MailText: {
     fontWeight: '600',

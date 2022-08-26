@@ -1,23 +1,45 @@
-import { Text, TextInput, View } from 'react-native'
+import { StyleSheet, Text, TextInput, View } from 'react-native'
 
 import React from 'react'
 
-const ComponentInputEmail = () => {
+const ComponentInput = (props) => {
   return (
     <View>
-      <Text style={MailText}>E-mail adresiniz</Text>
+            <Text style={[styles.MailText, props.textUp]}>{props.firstTextName}</Text>
             <TextInput
-              style={[MailBox, {paddingLeft: 15}]}
-              placeholder=" turgut@softcand.com"
-              onChangeText={handleChange('email')}
-              onBlur={handleBlur('email')}
-              value={values.email}
+              style={[props.textInput, {paddingLeft: 15}, styles.MailBox]}
+              placeholder={props.textInputName}
+              onChangeText={props.handleChange}
+              onBlur={props.onBlur}
+              value={props.value}
+              secureTextEntry={props.ste}
             />
-            {showTheEmail && errors.email && (
-              <Text style={CommonText}>{errors.email}</Text>
+            { props.inputErrors && (
+              <Text style={[styles.CommonText, props.textDown]}>{props.inputErrors}</Text>
             )}
     </View>
   )
 }
-export {ComponentInputEmail};
+export default ComponentInput;
 
+
+const styles = StyleSheet.create({
+MailText: {
+  fontWeight: '600',
+  color: '#656F77',
+  fontSize: 14,  
+},
+MailBox: {
+  borderWidth: 1,
+  borderColor: '#656F77',
+  width: 335,
+  height: 51,
+  borderRadius: 36,
+  // 
+},
+
+CommonText: {
+  color: 'red',
+  
+},
+});
