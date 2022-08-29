@@ -19,7 +19,7 @@ const width = Dimensions.get('window').width; //dimensions, ekran boyutunu almay
 const height = Dimensions.get('window').height;
 
 
-const Login = props => {
+const Login = ({navigation}) => {
   const [formikInitialValues, setFormikinitialValues] = useState({
     email: '',
     password: '',
@@ -74,12 +74,14 @@ const Login = props => {
       <Formik
         initialValues={formikInitialValues}
         validationSchema={LoginScreen}
+        //validateOnMount={true}
+
         onSubmit={(values, errors) => {
           // handleErrorControl(errors);
           // props.navigation.navigate('Register');
           console.log(values);
         }}>
-        {({handleChange, handleBlur, handleSubmit, values, errors}) => (
+        {({handleChange, handleBlur, handleSubmit, values, errors, isValid}) => (
           <View>
             {/* <Text style={MailText}>E-mail adresiniz</Text>
             <TextInput
@@ -162,11 +164,12 @@ const Login = props => {
               <Text style={CommonText}>{errors.password}</Text>
             )} */}
               
-            {!errors.password && !errors.email &&(
-            <TouchableOpacity style={Button} onPress={()=>console.log(errors.password)}>
+            
+            
+            <TouchableOpacity disabled={!(errors.password!=='' && isValid===true)} style={[Button,errors.password!=='' && isValid===true?{backgroundColor:Colors.NavyGreen}:{backgroundColor:Colors.NavyBlue}]} onPress={()=>console.log(errors.password)}>
               <Text style={ButtonText}>Giriş Yap</Text>
             </TouchableOpacity>
-            )}
+        
           
           </View>
         )}
@@ -251,7 +254,7 @@ const styles = StyleSheet.create({
   Button: {
     width: 335,
     height: 51,
-    backgroundColor: '#3F3D56',
+    //backgroundColor: '#3F3D56',
     borderRadius: 60,
     position: 'absolute',
     left: (width - 335) / 2,

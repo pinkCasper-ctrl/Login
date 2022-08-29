@@ -2,9 +2,11 @@
 
 import * as React from 'react';
 
-import { NavigationContainer } from '@react-navigation/native';
-import Router from './src/navigation';
+import { Router, Tabs } from './src/navigation';
 
+import { NavigationContainer } from '@react-navigation/native';
+
+//import Tabs from './src/navigation/BottomTabNavigation';
 // import { createBottomTabNavigator } from 'react-navigation-tabs';
 // import { createAppContainer, SafeAreaView } from 'react-navigation';
 // import { ScrollView } from 'react-native-gesture-handler';
@@ -21,7 +23,7 @@ import Router from './src/navigation';
 const App = () => {
   return (
     <NavigationContainer>
-      <Router />
+      <Tabs />
     </NavigationContainer>
   );
 };
