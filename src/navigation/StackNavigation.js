@@ -10,7 +10,6 @@ const Router=()=> {
 
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Bottom tab" head component={BottomTabNavigation} options={{headerShown:false}} />
             <Stack.Screen name="Login" head component={Login} options={{headerShown:false}} />
             <Stack.Screen name="Register" component={Register} options={{headerShown:false}}/>
         </Stack.Navigator>

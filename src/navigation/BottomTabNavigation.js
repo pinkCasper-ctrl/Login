@@ -65,7 +65,7 @@ const Tabs = () => {
        <Tab.Screen name="Append" component={Append} 
       options={{
         tabBarIcon: ({focused}) => (
-          <View style={{alignItems:'center', justifyContent:'center'}}>
+          <View style={{borderWidth:2, alignItems:'center', justifyContent:'center'}}>
             <Image 
             source={require('../assets/images/Sguare-plus.png')}
             style={{              
@@ -74,6 +74,8 @@ const Tabs = () => {
               tintColor:Colors.NavyBlue,
               borderRadius:20,
               elevation:1,
+              position:'absolute',
+              bottom:5,
             }}
             />
             {/* <Text style={{color:focused? Colors.NavyBlue : Colors.Grey, fontSize:12, fontWeight:'600'}}>Search</Text> */}

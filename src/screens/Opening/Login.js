@@ -166,7 +166,7 @@ const Login = ({navigation}) => {
               
             
             
-            <TouchableOpacity disabled={!(errors.password!=='' && isValid===true)} style={[Button,errors.password!=='' && isValid===true?{backgroundColor:Colors.NavyGreen}:{backgroundColor:Colors.NavyBlue}]} onPress={()=>console.log(errors.password)}>
+            <TouchableOpacity disabled={!(errors.password!=='' && isValid===true)} style={[Button,errors.password!=='' && isValid===true?{backgroundColor:Colors.NavyBlue}:{backgroundColor:Colors.B}]} onPress={()=>console.log(errors.password)}>
               <Text style={ButtonText}>Giriş Yap</Text>
             </TouchableOpacity>
         
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
     fontFamily: 'AkayaTelivigala-Regular',
     fontSize: 60,
     fontWeight: '400',
-    color: Colors.Blue,
+    color: Colors.NavyBlue,
   },
   InText: {
     height: 70,
