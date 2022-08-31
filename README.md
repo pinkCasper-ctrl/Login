@@ -2,23 +2,16 @@
 
 
 <div>
+<img width="350" alt="LoginPage" src="https://github.com/nrtncr/images/blob/main/LoginPage.png">
+<img width="350" alt="LoginPageValidation" src="https://github.com/nrtncr/images/blob/main/LoginPageValidation.png">
+<img width="350" alt="Register" src="https://github.com/nrtncr/images/blob/main/Register.png">
 <img width="350" alt="HomePage" src="https://github.com/nrtncr/images/blob/main/HomePage.png">
-
+<img width="350" alt="SearchPage" src="https://github.com/nrtncr/images/blob/main/SearchPage.png">
 </div>
 
 ## Running Project
 
 At the terminal;
-
-```
-yarn install
-
-```
-
-The packages used in the project with the command line are created in the "node_modules" folder.
-
-```
-command is run.
 
 ```
 yarn start
