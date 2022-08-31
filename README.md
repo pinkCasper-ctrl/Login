@@ -2,7 +2,7 @@
 
 
 <div>
-![LoginPage](https://user-images.githubusercontent.com/83647635/187725511-89cb7733-cea8-4c0a-b6cf-98d2df2b4d8d.png)
+<img alt="Login" src="https://user-images.githubusercontent.com/83647635/187725511-89cb7733-cea8-4c0a-b6cf-98d2df2b4d8d.png">
 
 
 </div>
