@@ -2,11 +2,9 @@
 
 
 <div>
-<img width="350" alt="LoginPage" src="https://github.com/nrtncr/images/blob/main/LoginPage.png">
-<img width="350" alt="LoginPageValidation" src="https://github.com/nrtncr/images/blob/main/LoginPageValidation.png">
-<img width="350" alt="Register" src="https://github.com/nrtncr/images/blob/main/RegisterPage.png">
-<img width="350" alt="HomePage" src="https://github.com/nrtncr/images/blob/main/HomePage.png">
-<img width="350" alt="SearchPage" src="https://github.com/nrtncr/images/blob/main/SearchPage.png">
+![LoginPage](https://user-images.githubusercontent.com/83647635/187725511-89cb7733-cea8-4c0a-b6cf-98d2df2b4d8d.png)
+
+
 </div>
 
 ## Running Project
